@@ -26,18 +26,21 @@ ln -s hyperion.config.default.json hyperion.config.json
 killall hyperiond
 /storage/hyperion/bin/hyperiond.sh /storage/.config/hyperion.config.json </dev/null >/dev/null 2>&1 &
 
-git clone https://github.com/Schamper/hyperion-switcher.git /storage/hyperion/switcher/
-cd /storage/hyperion/switcher/
+mkdir /storage/hyperion/switcher/ && cd /storage/hyperion/switcher/
+curl -L --output hyperion-switcherd.sh --get https://raw.githubusercontent.com/Schamper/hyperion-switcher/master/hyperion-switcherd.sh
+curl -L --output hyperion-switcher.conf --get https://raw.githubusercontent.com/Schamper/hyperion-switcher/master/hyperion-switcher.conf
 chmod a+x hyperion-switcherd.sh
 ```
 
 Also add this to `/storage/.config/autostart.sh`:
 ```
-/storage/hyperion/switcher/hyperion.switcher.sh /storage/hyperion/switcher/hyperion.switcher.conf > /dev/null 2>&1 &
+/storage/hyperion/switcher/hyperion-switcherd.sh /storage/hyperion/switcher/hyperion-switcher.conf > /dev/null 2>&1 &
 ```
 
 Now you need to edit the configuration file, `/storage/hyperion/switcher/hyperion-switcher.conf` to your needs.
 All the information regarding the configuration is included in the comments.
+
+At this point it's probably easiest to reboot.
 
 ## Killing the Switcher
 
