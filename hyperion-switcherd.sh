@@ -58,7 +58,7 @@ INPUT=0
 						if [ "$target" != "$INPUT" ]; then
 							echo "[$(date "+%F %T")] Input changed: $target"
 
-							new_config="${path_config}${config_kodi}"
+							new_config="${path_config}${config_default}"
 
 							if [ -n "`echo $src_grabber | grep $target`" ]; then
 								echo "[$(date "+%F %T")] Switching to Grabber config file"
